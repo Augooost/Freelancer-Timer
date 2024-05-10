@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freelancer Timer</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="timer">
-        <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+    <div class="container">
+        <div id="timer">
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+        </div>
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="stopTimer()">Stop</button>
+        
+        <h2>Total Time Worked: <span id="total-time">00:00:00</span></h2>
+        <ul id="log"></ul>
     </div>
-    <button onclick="startTimer()">Start</button>
-    <button onclick="pauseTimer()">Pause</button>
-    <button onclick="stopTimer()">Stop</button>
-    
-    <h2>Total Time Worked: <span id="total-time">00:00:00</span></h2>
-    <ul id="log"></ul>
-
     <script src="script.js"></script>
 </body>
 </html>
