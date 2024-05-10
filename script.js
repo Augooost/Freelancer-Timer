@@ -27,12 +27,13 @@ function updateDisplay(totalSeconds, hoursId, minutesId, secondsId) {
 
 function toggleTimer() {
     const button = document.getElementById('toggleButton');
+    const icon = button.querySelector('.material-symbols-outlined');
     if (interval) {
         pauseTimer();
-        button.textContent = '▶';
+        icon.textContent = 'play_arrow';
     } else {
         startTimer();
-        button.textContent = '⏸';
+        icon.textContent = 'pause';
     }
 }
 
@@ -53,7 +54,9 @@ function stopTimer() {
     recordDailyLog();
     seconds = 0;
     updateDisplay(seconds, 'hours', 'minutes', 'seconds');
-    document.getElementById('toggleButton').textContent = '▶';
+    const button = document.getElementById('toggleButton');
+    const icon = button.querySelector('.material-symbols-outlined');
+    icon.textContent = 'play_arrow';
 }
 
 function resetAll() {
@@ -65,7 +68,9 @@ function resetAll() {
     updateDisplay(seconds, 'hours', 'minutes', 'seconds');
     updateLog();
     updateTotalTime();
-    document.getElementById('toggleButton').textContent = '▶';
+    const button = document.getElementById('toggleButton');
+    const icon = button.querySelector('.material-symbols-outlined');
+    icon.textContent = 'play_arrow';
 }
 
 function recordDailyLog() {
