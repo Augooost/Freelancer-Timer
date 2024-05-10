@@ -125,6 +125,13 @@ function getDaySuffix(day) {
 
 // Initialize log and total time on page load
 document.addEventListener('DOMContentLoaded', () => {
+    const now = new Date();
+    const today = now.toISOString().split('T')[0];
+    const todayLog = dailyLogs.find(log => log.date === today);
+    if (!todayLog) {
+        dailyLogs.push({ date: today, seconds: 0 });
+        localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
+    }
     updateLog();
     updateTotalTime();
 });
