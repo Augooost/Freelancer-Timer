@@ -1,0 +1,18 @@
+#timer {
+    font-size: 48px;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    font-size: 20px;
+    margin: 8px;
+}
+
+#total-time {
+    font-weight: bold;
+}
+
+#log {
+    list-style-type: none;
+    padding: 0;
+}
