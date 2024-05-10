@@ -25,6 +25,17 @@ function updateDisplay(totalSeconds, hoursId, minutesId, secondsId) {
     }
 }
 
+function toggleTimer() {
+    const button = document.getElementById('toggleButton');
+    if (interval) {
+        pauseTimer();
+        button.textContent = '▶';
+    } else {
+        startTimer();
+        button.textContent = '⏸';
+    }
+}
+
 function startTimer() {
     if (interval) {
         return;
@@ -42,6 +53,19 @@ function stopTimer() {
     recordDailyLog();
     seconds = 0;
     updateDisplay(seconds, 'hours', 'minutes', 'seconds');
+    document.getElementById('toggleButton').textContent = '▶';
+}
+
+function resetAll() {
+    clearInterval(interval);
+    interval = null;
+    seconds = 0;
+    dailyLogs = [];
+    localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
+    updateDisplay(seconds, 'hours', 'minutes', 'seconds');
+    updateLog();
+    updateTotalTime();
+    document.getElementById('toggleButton').textContent = '▶';
 }
 
 function recordDailyLog() {
