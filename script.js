@@ -98,7 +98,6 @@ function updateLog() {
         const logItem = document.createElement('li');
         logItem.innerHTML = `
             <div class="log-date">
-                ${formatDate(log.date)} 
                 <input type="date" value="${log.date}" onchange="updateLogDate(${index}, this.value)">
             </div>
             <span>${formatTime(log.seconds)}</span>
@@ -122,15 +121,8 @@ function updateTotalTime() {
 function formatTime(totalSeconds) {
     let hrs = Math.floor(totalSeconds / 3600);
     let mins = Math.floor((totalSeconds - (hrs * 3600)) / 60);
-    return `${hrs}Hr ${mins}min`;
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const daySuffix = getDaySuffix(day);
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    return `${date.toLocaleDateString('en-US', options).replace(/\d+/, `${day}${daySuffix}`)}`;
+    let secs = totalSeconds % 60;
+    return `${hrs}h ${mins}m ${secs}s`;
 }
 
 function getDaySuffix(day) {
@@ -154,6 +146,27 @@ function updateCurrentDate() {
     const now = new Date();
     const formattedDate = formatDate(now);
     document.getElementById('currentDate').textContent = formattedDate;
+}
+
+function showAddEntryForm() {
+    document.getElementById('entryForm').style.display = 'block';
+}
+
+function hideAddEntryForm() {
+    document.getElementById('entryForm').style.display = 'none';
+}
+
+function addNewEntry() {
+    const entryDate = document.getElementById('entryDate').value;
+    const entryTime = document.getElementById('entryTime').value;
+    const [hrs, mins, secs] = entryTime.split(':').map(Number);
+    const totalSeconds = hrs * 3600 + mins * 60 + secs;
+
+    dailyLogs.push({ date: entryDate, seconds: totalSeconds });
+    localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
+    updateLog();
+    updateTotalTime();
+    hideAddEntryForm();
 }
 
 // Initialize log, total time, and current date on page load
