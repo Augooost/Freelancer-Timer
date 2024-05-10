@@ -59,6 +59,20 @@ function stopTimer() {
     icon.textContent = 'play_arrow';
 }
 
+function resetAll() {
+    clearInterval(interval);
+    interval = null;
+    seconds = 0;
+    dailyLogs = [];
+    localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
+    updateDisplay(seconds, 'hours', 'minutes', 'seconds');
+    updateLog();
+    updateTotalTime();
+    const button = document.getElementById('toggleButton');
+    const icon = button.querySelector('.material-symbols-outlined');
+    icon.textContent = 'play_arrow';
+}
+
 function recordDailyLog() {
     const now = new Date();
     const today = getFormattedDate(now);
