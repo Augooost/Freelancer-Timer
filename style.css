@@ -16,6 +16,7 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    position: relative;
 }
 
 #timer {
@@ -36,6 +37,38 @@ button {
 }
 
 button:hover {
+    background-color: #0056b3;
+}
+
+#resetButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #d3d3d3;
+    color: #333;
+    font-size: 12px;
+    padding: 4px 8px 6px 8px;
+    border-radius: 3px;
+}
+
+#resetButton:hover {
+    background-color: #bbb;
+}
+
+#toggleButton {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+}
+
+#toggleButton:hover {
     background-color: #0056b3;
 }
 
