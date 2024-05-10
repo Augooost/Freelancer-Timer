@@ -38,11 +38,11 @@ body {
 }
 
 button {
-    font-size: 16px;
-    margin: 8px;
-    padding: 12px 16px;
+    font-size: 18px;
+    margin: 5px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
     background-color: #007bff;
     color: #fff;
@@ -58,7 +58,7 @@ button:hover {
     color: #333;
     font-size: 12px;
     padding: 4px 8px 6px 8px;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
 #resetButton:hover {
@@ -69,17 +69,25 @@ button:hover {
     background-color: #007bff;
     color: #fff;
     border-radius: 50%;
-    width: 64px;
-    height: 64px;
+    width: 50px;
+    height: 50px;
     font-size: 24px;
-    line-height: 64px;
+    line-height: 50px;
     text-align: center;
     vertical-align: middle;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #toggleButton:hover {
     background-color: #0056b3;
+}
+
+.material-symbols-outlined {
+    font-size: 32px;
+    line-height: 0;
 }
 
 h2 {
@@ -100,7 +108,7 @@ h2 {
 
 #log li {
     background: #e9ecef;
-    margin: 8px 0;
-    padding: 16px;
-    border-radius: 8px;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
 }
