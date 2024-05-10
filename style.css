@@ -21,7 +21,7 @@ body {
 
 #navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -51,18 +51,6 @@ button {
 
 button:hover {
     background-color: #0056b3;
-}
-
-#resetButton {
-    background-color: #d3d3d3;
-    color: #333;
-    font-size: 12px;
-    padding: 4px 8px 6px 8px;
-    border-radius: 3px;
-}
-
-#resetButton:hover {
-    background-color: #bbb;
 }
 
 #toggleButton {
