@@ -51,6 +51,13 @@ body {
     margin-bottom: 20px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
 button {
     font-size: 18px;
     margin: 5px;
@@ -70,31 +77,37 @@ button:hover {
     background-color: #0056b3;
 }
 
-#toggleButton {
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 50%;
+#toggleButton, #addButton {
     width: 50px;
     height: 50px;
     font-size: 24px;
-    line-height: 50px;
-    text-align: center;
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
     padding: 0;
+}
+
+#toggleButton {
+    background-color: #007bff;
 }
 
 #toggleButton:hover {
     background-color: #0056b3;
 }
 
+#addButton {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+#addButton:hover {
+    background-color: #d3d3d3;
+}
+
 .material-symbols-outlined {
     font-size: 32px;
     line-height: 0;
-}
-
-#addButton .material-symbols-outlined {
-    font-size: 24px;
-    margin-right: 5px;
 }
 
 h2 {
@@ -118,4 +131,21 @@ h2 {
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-date {
+    display: flex;
+    align-items: center;
+}
+
+.log-date input {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
 }
