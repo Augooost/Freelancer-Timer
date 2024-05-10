@@ -27,6 +27,16 @@
         </div>
         <h2>Total Time Worked: <span id="total-time">00:00:00</span></h2>
         <ul id="log"></ul>
+        <button id="addEntryButton" onclick="showAddEntryForm()">Add</button>
+        <div id="entryForm" style="display: none;">
+            <h3>Add New Entry</h3>
+            <label for="entryDate">Date:</label>
+            <input type="date" id="entryDate">
+            <label for="entryTime">Time (hh:mm:ss):</label>
+            <input type="text" id="entryTime" placeholder="00:00:00">
+            <button onclick="addNewEntry()">Add Entry</button>
+            <button onclick="hideAddEntryForm()">Cancel</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
