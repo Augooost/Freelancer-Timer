@@ -65,7 +65,7 @@ function updateLog() {
     logElement.innerHTML = '';
     dailyLogs.forEach(log => {
         const logItem = document.createElement('li');
-        logItem.textContent = `${log.date}: ${formatTime(log.seconds)}`;
+        logItem.textContent = `${formatDate(log.date)} — ${formatTime(log.seconds)}`;
         logElement.appendChild(logItem);
     });
 }
@@ -78,8 +78,13 @@ function updateTotalTime() {
 function formatTime(totalSeconds) {
     let hrs = Math.floor(totalSeconds / 3600);
     let mins = Math.floor((totalSeconds - (hrs * 3600)) / 60);
-    let secs = totalSeconds % 60;
-    return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+    return `${hrs}Hr ${mins}min`;
+}
+
+function formatDate(isoDate) {
+    const date = new Date(isoDate);
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options).replace(',', '').replace(' ', ' ').replace(/(\d+)(th|st|nd|rd)/, '$1');
 }
 
 // Initialize log and total time on page load
@@ -87,4 +92,3 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLog();
     updateTotalTime();
 });
-
