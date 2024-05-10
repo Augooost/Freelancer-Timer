@@ -16,9 +16,13 @@ function updateDisplay(totalSeconds, hoursId, minutesId, secondsId) {
     let mins = Math.floor((totalSeconds - (hrs * 3600)) / 60);
     let secs = totalSeconds % 60;
 
-    document.getElementById(hoursId).textContent = pad(hrs);
-    document.getElementById(minutesId).textContent = pad(mins);
-    document.getElementById(secondsId).textContent = pad(secs);
+    if (hoursId === 'total-time') {
+        document.getElementById(hoursId).textContent = `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+    } else {
+        document.getElementById(hoursId).textContent = pad(hrs);
+        document.getElementById(minutesId).textContent = pad(mins);
+        document.getElementById(secondsId).textContent = pad(secs);
+    }
 }
 
 function startTimer() {
@@ -83,3 +87,4 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLog();
     updateTotalTime();
 });
+
