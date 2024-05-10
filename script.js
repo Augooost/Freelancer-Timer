@@ -64,6 +64,8 @@ function resetAll() {
     interval = null;
     seconds = 0;
     dailyLogs = [];
+    const today = getFormattedDate(new Date());
+    dailyLogs.push({ date: today, seconds: 0 });
     localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
     updateDisplay(seconds, 'hours', 'minutes', 'seconds');
     updateLog();
