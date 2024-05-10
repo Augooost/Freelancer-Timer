@@ -70,7 +70,7 @@ function resetAll() {
 
 function recordDailyLog() {
     const now = new Date();
-    const today = formatDate(now);
+    const today = getFormattedDate(now);
     const todayLog = dailyLogs.find(log => log.date === today);
 
     if (todayLog) {
@@ -89,7 +89,7 @@ function updateLog() {
     logElement.innerHTML = '';
     dailyLogs.forEach(log => {
         const logItem = document.createElement('li');
-        logItem.textContent = `${log.date} — ${formatTime(log.seconds)}`;
+        logItem.textContent = `${formatDate(log.date)} — ${formatTime(log.seconds)}`;
         logElement.appendChild(logItem);
     });
 }
@@ -105,14 +105,12 @@ function formatTime(totalSeconds) {
     return `${hrs}Hr ${mins}min`;
 }
 
-function formatDate(date) {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+function formatDate(dateString) {
+    const date = new Date(dateString);
     const day = date.getDate();
     const daySuffix = getDaySuffix(day);
-    const dayName = days[date.getDay()];
-    const monthName = months[date.getMonth()];
-    return `${dayName} ${monthName} ${day}${daySuffix}`;
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    return `${date.toLocaleDateString('en-US', options).replace(/\d+/, `${day}${daySuffix}`)}`;
 }
 
 function getDaySuffix(day) {
@@ -125,8 +123,29 @@ function getDaySuffix(day) {
     }
 }
 
-// Initialize log and total time on page load
+function getFormattedDate(date) {
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1); // Months are zero-indexed
+    const day = pad(date.getDate());
+    return `${year}-${month}-${day}`;
+}
+
+function updateCurrentDate() {
+    const now = new Date();
+    const formattedDate = formatDate(now);
+    document.getElementById('currentDate').textContent = formattedDate;
+}
+
+// Initialize log, total time, and current date on page load
 document.addEventListener('DOMContentLoaded', () => {
+    const now = new Date();
+    const today = getFormattedDate(now);
+    const todayLog = dailyLogs.find(log => log.date === today);
+    if (!todayLog) {
+        dailyLogs.push({ date: today, seconds: 0 });
+        localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
+    }
     updateLog();
     updateTotalTime();
+    updateCurrentDate();
 });
