@@ -94,11 +94,24 @@ function recordDailyLog() {
 function updateLog() {
     const logElement = document.getElementById('log');
     logElement.innerHTML = '';
-    dailyLogs.forEach(log => {
+    dailyLogs.forEach((log, index) => {
         const logItem = document.createElement('li');
-        logItem.textContent = `${formatDate(log.date)} — ${formatTime(log.seconds)}`;
+        logItem.innerHTML = `
+            <div class="log-date">
+                ${formatDate(log.date)} 
+                <input type="date" value="${log.date}" onchange="updateLogDate(${index}, this.value)">
+            </div>
+            <span>${formatTime(log.seconds)}</span>
+        `;
         logElement.appendChild(logItem);
     });
+}
+
+function updateLogDate(index, newDate) {
+    dailyLogs[index].date = newDate;
+    localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
+    updateLog();
+    updateTotalTime();
 }
 
 function updateTotalTime() {
