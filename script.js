@@ -70,7 +70,7 @@ function resetAll() {
 
 function recordDailyLog() {
     const now = new Date();
-    const today = getFormattedDate(now);
+    const today = getLocalDate(now);
     const todayLog = dailyLogs.find(log => log.date === today);
 
     if (todayLog) {
@@ -123,7 +123,7 @@ function getDaySuffix(day) {
     }
 }
 
-function getFormattedDate(date) {
+function getLocalDate(date) {
     const year = date.getFullYear();
     const month = pad(date.getMonth() + 1); // Months are zero-indexed
     const day = pad(date.getDate());
@@ -133,7 +133,7 @@ function getFormattedDate(date) {
 // Initialize log and total time on page load
 document.addEventListener('DOMContentLoaded', () => {
     const now = new Date();
-    const today = getFormattedDate(now);
+    const today = getLocalDate(now);
     const todayLog = dailyLogs.find(log => log.date === today);
     if (!todayLog) {
         dailyLogs.push({ date: today, seconds: 0 });
