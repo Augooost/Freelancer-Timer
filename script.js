@@ -70,7 +70,7 @@ function resetAll() {
 
 function recordDailyLog() {
     const now = new Date();
-    const today = getLocalDate(now);
+    const today = formatDate(now);
     const todayLog = dailyLogs.find(log => log.date === today);
 
     if (todayLog) {
@@ -89,7 +89,7 @@ function updateLog() {
     logElement.innerHTML = '';
     dailyLogs.forEach(log => {
         const logItem = document.createElement('li');
-        logItem.textContent = `${formatDate(log.date)} — ${formatTime(log.seconds)}`;
+        logItem.textContent = `${log.date} — ${formatTime(log.seconds)}`;
         logElement.appendChild(logItem);
     });
 }
@@ -105,12 +105,14 @@ function formatTime(totalSeconds) {
     return `${hrs}Hr ${mins}min`;
 }
 
-function formatDate(dateString) {
-    const date = new Date(dateString);
+function formatDate(date) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const day = date.getDate();
     const daySuffix = getDaySuffix(day);
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    return `${date.toLocaleDateString('en-US', options).replace(/\d+/, `${day}${daySuffix}`)}`;
+    const dayName = days[date.getDay()];
+    const monthName = months[date.getMonth()];
+    return `${dayName} ${monthName} ${day}${daySuffix}`;
 }
 
 function getDaySuffix(day) {
@@ -123,22 +125,8 @@ function getDaySuffix(day) {
     }
 }
 
-function getLocalDate(date) {
-    const year = date.getFullYear();
-    const month = pad(date.getMonth() + 1); // Months are zero-indexed
-    const day = pad(date.getDate());
-    return `${year}-${month}-${day}`;
-}
-
 // Initialize log and total time on page load
 document.addEventListener('DOMContentLoaded', () => {
-    const now = new Date();
-    const today = getLocalDate(now);
-    const todayLog = dailyLogs.find(log => log.date === today);
-    if (!todayLog) {
-        dailyLogs.push({ date: today, seconds: 0 });
-        localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
-    }
     updateLog();
     updateTotalTime();
 });
