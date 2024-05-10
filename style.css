@@ -32,7 +32,7 @@ body {
     text-transform: uppercase;
 }
 
-#resetButton {
+#resetButton, #addEntryButton {
     background-color: #d3d3d3;
     color: #333;
     font-size: 12px;
@@ -42,7 +42,7 @@ body {
     cursor: pointer;
 }
 
-#resetButton:hover {
+#resetButton:hover, #addEntryButton:hover {
     background-color: #bbb;
 }
 
@@ -136,16 +136,34 @@ h2 {
     align-items: center;
 }
 
-.log-date {
-    display: flex;
-    align-items: center;
+#entryForm {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: left;
 }
 
-.log-date input {
-    margin-left: 10px;
+#entryForm h3 {
+    margin-top: 0;
+}
+
+#entryForm label {
+    display: block;
+    margin-top: 10px;
+}
+
+#entryForm input {
+    width: calc(100% - 20px);
     padding: 5px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 14px;
-    font-family: 'Manrope', sans-serif;
+}
+
+#entryForm button {
+    margin-top: 10px;
+    margin-right: 5px;
 }
