@@ -9,12 +9,15 @@
 </head>
 <body>
     <div class="container">
+        <div id="navbar">
+            <span id="currentDate"></span>
+            <button id="resetButton" onclick="resetAll()">Reset</button>
+        </div>
         <div id="timer">
             <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
         </div>
         <button id="toggleButton" class="toggle" onclick="toggleTimer()">▶</button>
         <button onclick="stopTimer()">Stop</button>
-        <button id="resetButton" onclick="resetAll()">Reset</button>
         
         <h2>Total Time Worked: <span id="total-time">00:00:00</span></h2>
         <ul id="log"></ul>
