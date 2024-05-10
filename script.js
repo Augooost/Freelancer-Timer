@@ -70,7 +70,7 @@ function resetAll() {
 
 function recordDailyLog() {
     const now = new Date();
-    const today = formatDateToISO(now);
+    const today = getFormattedDate(now);
     const todayLog = dailyLogs.find(log => log.date === today);
 
     if (todayLog) {
@@ -105,8 +105,8 @@ function formatTime(totalSeconds) {
     return `${hrs}Hr ${mins}min`;
 }
 
-function formatDate(isoDate) {
-    const date = new Date(isoDate);
+function formatDate(dateString) {
+    const date = new Date(dateString);
     const day = date.getDate();
     const daySuffix = getDaySuffix(day);
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
@@ -123,7 +123,7 @@ function getDaySuffix(day) {
     }
 }
 
-function formatDateToISO(date) {
+function getFormattedDate(date) {
     const year = date.getFullYear();
     const month = pad(date.getMonth() + 1); // Months are zero-indexed
     const day = pad(date.getDate());
@@ -133,7 +133,7 @@ function formatDateToISO(date) {
 // Initialize log and total time on page load
 document.addEventListener('DOMContentLoaded', () => {
     const now = new Date();
-    const today = formatDateToISO(now);
+    const today = getFormattedDate(now);
     const todayLog = dailyLogs.find(log => log.date === today);
     if (!todayLog) {
         dailyLogs.push({ date: today, seconds: 0 });
