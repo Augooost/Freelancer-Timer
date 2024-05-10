@@ -19,17 +19,30 @@ body {
     position: relative;
 }
 
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#currentDate {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 #timer {
     font-size: 48px;
     margin-bottom: 20px;
 }
 
 button {
-    font-size: 18px;
-    margin: 5px;
-    padding: 10px 20px;
+    font-size: 16px;
+    margin: 8px;
+    padding: 12px 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     background-color: #007bff;
     color: #fff;
@@ -41,14 +54,11 @@ button:hover {
 }
 
 #resetButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     background-color: #d3d3d3;
     color: #333;
     font-size: 12px;
     padding: 4px 8px 6px 8px;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 #resetButton:hover {
@@ -59,10 +69,10 @@ button:hover {
     background-color: #007bff;
     color: #fff;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
     font-size: 24px;
-    line-height: 50px;
+    line-height: 64px;
     text-align: center;
     vertical-align: middle;
     padding: 0;
@@ -90,7 +100,7 @@ h2 {
 
 #log li {
     background: #e9ecef;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 8px 0;
+    padding: 16px;
+    border-radius: 8px;
 }
