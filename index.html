@@ -17,13 +17,14 @@
         <div id="timer">
             <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
         </div>
-        <button id="toggleButton" class="toggle" onclick="toggleTimer()">
-            <span class="material-symbols-outlined">play_arrow</span>
-        </button>
-        <button id="addButton" onclick="stopTimer()">
-            <span class="material-symbols-outlined">add</span> Add
-        </button>
-        
+        <div class="button-container">
+            <button id="toggleButton" class="toggle" onclick="toggleTimer()">
+                <span class="material-symbols-outlined">play_arrow</span>
+            </button>
+            <button id="addButton" onclick="stopTimer()">
+                <span class="material-symbols-outlined">add</span>
+            </button>
+        </div>
         <h2>Total Time Worked: <span id="total-time">00:00:00</span></h2>
         <ul id="log"></ul>
     </div>
