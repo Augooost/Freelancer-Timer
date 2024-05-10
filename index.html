@@ -6,6 +6,7 @@
     <title>Freelancer Timer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -16,7 +17,9 @@
         <div id="timer">
             <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
         </div>
-        <button id="toggleButton" class="toggle" onclick="toggleTimer()">▶</button>
+        <button id="toggleButton" class="toggle" onclick="toggleTimer()">
+            <span class="material-symbols-outlined">play_arrow</span>
+        </button>
         <button onclick="stopTimer()">Stop</button>
         
         <h2>Total Time Worked: <span id="total-time">00:00:00</span></h2>
