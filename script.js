@@ -83,8 +83,20 @@ function formatTime(totalSeconds) {
 
 function formatDate(isoDate) {
     const date = new Date(isoDate);
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options).replace(',', '').replace(' ', ' ').replace(/(\d+)(th|st|nd|rd)/, '$1');
+    const day = date.getDate();
+    const daySuffix = getDaySuffix(day);
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    return `${date.toLocaleDateString('en-US', options).replace(/\d+/, `${day}${daySuffix}`)}`;
+}
+
+function getDaySuffix(day) {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+    }
 }
 
 // Initialize log and total time on page load
